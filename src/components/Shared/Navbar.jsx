@@ -37,7 +37,7 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to='/blog'
+                                    to='/instructor'
                                     aria-label='About Us'
                                     title='About Us'
                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
