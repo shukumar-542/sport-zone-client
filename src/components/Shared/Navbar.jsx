@@ -1,13 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
 import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/solid'
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const {user,logOut} = useContext(AuthContext);
+   
+    const handleLogOUt = () => {
+        logOut()
+            .then(() => {
+                console.log('logOut Successfully');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     return (
-        <div className='bg- '>
-            <div className=' py-5 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
+        <div className='sticky top-0 bg-white shadow-md z-10'>
+            <div className=' py-2 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
                     <div className='font-bold text-3xl'>logo</div>
                     <div>
@@ -56,15 +69,15 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <div >
-                        <div className="w-10 rounded-full tooltip tooltip-bottom">
-                            <img src="" className='rounded-full' alt="" />
-                        </div>
+                    <div className="flex" >
+                        {user && <div className="w-10 rounded-full tooltip tooltip-bottom">
+                            <img src={user.photoURL} className='rounded-full' alt="" />
+                        </div>}
 
-                        <button className='btn bg-white hidden lg:block text-orange-500 border-none'>logOut</button>
-                        <Link to='/login' className='hidden lg:block'>
-                            <button className='btn bg-white text-orange-500 border-none '>Login</button>
-                        </Link>
+                       {user ? <button onClick={handleLogOUt} className='btn bg-white hidden lg:block text-blue-600 border-none'>logOut</button>
+                         : <Link to='/login' className='hidden lg:block'>
+                            <button className='btn bg-white text-blue-600 border-none '>Login</button>
+                        </Link>}
                     </div>
 
 
