@@ -1,0 +1,61 @@
+[
+    {
+      "id": 1,
+      "className": "Yoga",
+      "instructorName": "Emily Johnson",
+      "image": "https://i.ibb.co/DgGNMy8/boxing.jpg",
+      "availableSeat": 10,
+      "price": 15.99
+    },
+    {
+      "id": 2,
+      "className": "Pilates",
+      "instructorName": "John Smith",
+      "image": "https://i.ibb.co/6YqGVph/vollyball.jpg",
+      "availableSeat": 8,
+      "price": 12.99
+    },
+    {
+      "id": 3,
+      "className": "Boxing",
+      "instructorName": "David Wilson",
+      "image": "https://i.ibb.co/8bFWqW5/basketball.jpg",
+      "availableSeat": 15,
+      "price": 18.99
+    },
+    {
+      "id": 4,
+      "className": "Zumba",
+      "instructorName": "Sarah Thompson",
+      "image": "https://i.ibb.co/4VmRrMD/football.jpg",
+      "availableSeat": 12,
+      "price": 14.99
+    },
+    {
+      "id": 5,
+      "className": "Spin Cycling",
+      "instructorName": "Michael Lee",
+      "image": "  https://i.ibb.co/MgqY7C9/tenis.webp",
+      "availableSeat": 20,
+      "price": 16.99
+    },
+    {
+      "id": 6,
+      "className": "Kickboxing",
+      "instructorName": "Jennifer Davis",
+      "image": "https://i.ibb.co/gDPgL9C/yoga.jpg",
+      "availableSeat": 10,
+      "price": 17.99
+    }
+  ]
+  
+
+ 
+  
+  
+  
+  
+
+
+
+
