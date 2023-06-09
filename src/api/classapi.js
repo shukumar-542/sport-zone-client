@@ -30,3 +30,10 @@ export const updateClassStatus = async (id) =>{
     const data = await response.json()
     return data
 }
+export const updateClassStatusDeny = async (id) =>{
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/deny/${id}`,{
+        method : 'PATCH',
+    })
+    const data = await response.json()
+    return data
+}

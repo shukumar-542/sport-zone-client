@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { getAllClasses, updateClassStatus } from '../../../api/classapi';
+import { getAllClasses, updateClassStatus, updateClassStatusDeny } from '../../../api/classapi';
 import { useQuery } from '@tanstack/react-query';
+import Modal from '../../Modal/Modal';
 
 const ManageClass = () => {
     // const [allClasses, setAllClasses] = useState([])
@@ -8,6 +9,16 @@ const ManageClass = () => {
     //     getAllClasses()
     //     .then(data => setAllClasses(data))
     // },[])
+
+    let [isOpen, setIsOpen] = useState(false)
+
+    function closeModal() {
+      setIsOpen(false)
+    }
+  
+    function openModal() {
+      setIsOpen(true)
+    }
 
     const {data : allClasses =[], refetch} = useQuery({
         queryKey : ['classes'],
@@ -21,6 +32,13 @@ const ManageClass = () => {
         updateClassStatus(id)
         .then(data=>{
             // console.log(data);
+            refetch()
+        })
+    }
+
+    const handleDeny =(id)=>{
+        updateClassStatusDeny(id)
+        .then(data =>{
             refetch()
         })
     }
@@ -73,9 +91,10 @@ const ManageClass = () => {
                         <td> {singleClass.status}</td>
                         
                         <th className=''>
-                            <button onClick={()=>handleApprove(singleClass._id)} className="btn btn-ghost btn-xs">Approved</button>
-                            <button className="btn btn-ghost btn-xs" disabled={singleClass?.status === 'approved' }>Deny</button>
-                            <button className="btn btn-ghost btn-xs">FeedBack</button>
+                            <button onClick={()=>handleApprove(singleClass._id)}   disabled={singleClass?.status === 'deny' || singleClass?.status === 'approved'} className="btn btn-ghost btn-xs">Approved</button>
+                            <button onClick={()=>handleDeny(singleClass._id)} className="btn btn-ghost btn-xs" disabled={singleClass?.status === 'approved' || singleClass?.status === 'deny'}>Deny</button>
+          
+                            <button className="btn btn-ghost btn-xs" onClick={()=>openModal()}>FeedBack</button>
                         </th>
                     </tr>)
                     }
@@ -83,6 +102,7 @@ const ManageClass = () => {
                 
 
             </table>
+            <Modal isOpen={isOpen} closeModal={closeModal}></Modal>
         </div>
     );
 };
