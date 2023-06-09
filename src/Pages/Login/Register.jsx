@@ -4,6 +4,7 @@ import { updateProfile, getAuth } from 'firebase/auth';
 import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from "react-hook-form";
+import { savedUser } from '../../api/auth';
 
 
 
@@ -26,7 +27,12 @@ const Register = () => {
             const user = result.user;
             updateUser(data.name, data.photo)
             setUser({ ...user, displayName: data.name, photoURL: data.photo })
-            
+            console.log(data.name);
+            const useUserDb  = {
+                email : user.email,
+                displayName  : data.name
+            }
+            savedUser(useUserDb)
             setSuccess('user Create successfully')
             setError('')
             navigate(from)

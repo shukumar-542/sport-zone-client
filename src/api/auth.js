@@ -1,7 +1,8 @@
 // saved user email in the database
 export const savedUser = (user)=>{
     const currentUser = {
-        email : user.email
+        email : user.email,
+        name : user.displayName
     }
     fetch(`http://localhost:5000/users/${user?.email}`,{
         method : 'PUT',
@@ -13,4 +14,28 @@ export const savedUser = (user)=>{
     .then(data => {
         console.log(data);
     })
+}
+
+// set user to admin
+export const userToAdmin = (id) =>{
+    fetch(`http://localhost:5000/users/admin/${id}`,{
+        method : 'PATCH',
+        headers : {'content-type' : 'application/json'},
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+
+}
+export const userToInstructor = (id) =>{
+    fetch(`http://localhost:5000/users/instructor/${id}`,{
+        method : 'PATCH',
+        headers : {'content-type' : 'application/json'},
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+    })
+
 }
