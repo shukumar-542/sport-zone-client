@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { getAllClasses } from '../../../api/classapi';
+import { getAllClasses, updateClassStatus } from '../../../api/classapi';
+import { useQuery } from '@tanstack/react-query';
 
 const ManageClass = () => {
-    const [allClasses, setAllClasses] = useState([])
-    useEffect(()=>{
-        getAllClasses()
-        .then(data => setAllClasses(data))
-    },[])
+    // const [allClasses, setAllClasses] = useState([])
+    // useEffect(()=>{
+    //     getAllClasses()
+    //     .then(data => setAllClasses(data))
+    // },[])
+
+    const {data : allClasses =[], refetch} = useQuery({
+        queryKey : ['classes'],
+        queryFn : async ()=>{
+            const result = await getAllClasses()
+            return result
+        }
+
+    })
+    const handleApprove =(id) =>{
+        updateClassStatus(id)
+        .then(data=>{
+            // console.log(data);
+            refetch()
+        })
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -56,8 +73,8 @@ const ManageClass = () => {
                         <td> {singleClass.status}</td>
                         
                         <th className=''>
-                            <button className="btn btn-ghost btn-xs">Approved</button>
-                            <button className="btn btn-ghost btn-xs">Deny</button>
+                            <button onClick={()=>handleApprove(singleClass._id)} className="btn btn-ghost btn-xs">Approved</button>
+                            <button className="btn btn-ghost btn-xs" disabled={singleClass?.status === 'approved' }>Deny</button>
                             <button className="btn btn-ghost btn-xs">FeedBack</button>
                         </th>
                     </tr>)

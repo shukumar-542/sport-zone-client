@@ -21,3 +21,12 @@ export const getClassByEmail = async (email) =>{
     const data = await response.json();
     return data;
 }
+
+// update class status
+export const updateClassStatus = async (id) =>{
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/update/${id}`,{
+        method : 'PATCH',
+    })
+    const data = await response.json()
+    return data
+}

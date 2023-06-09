@@ -12,7 +12,7 @@ const ManageUser = () => {
             return result.json()
         }
     })
-    console.log(users);
+    // console.log(users);
 
     const handleUserToAdmin =(id)=>{
         userToAdmin(id)
