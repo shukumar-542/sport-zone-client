@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
+import { savedUser } from "../../api/auth";
 
 
 const Login = () => {
@@ -14,42 +15,43 @@ const Login = () => {
 
     // console.log(from);
 
-    const handleLogin = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+    // const handleLogin = (event) => {
+    //     event.preventDefault();
+    //     const form = event.target;
+    //     const email = form.email.value;
+    //     const password = form.password.value;
 
-        setError('');
-        if (!email) {
-            return setError('Enter Your Email')
-        }
-        if (!password) {
-            return setError('Enter Password')
-        }
+    //     setError('');
+    //     if (!email) {
+    //         return setError('Enter Your Email')
+    //     }
+    //     if (!password) {
+    //         return setError('Enter Password')
+    //     }
 
-        loggedInUser(email, password)
-            .then(result => {
-                const user = result.user;
-                navigate(from)
-                // setSuccess('user Logged in successfully')
-                console.log(user);
-            })
-            .catch(error => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                setError(errorMessage)
-            })
+    //     loggedInUser(email, password)
+    //         .then(result => {
+    //             const user = result.user;
+    //             navigate(from)
+    //             // setSuccess('user Logged in successfully')
+    //             console.log(user);
+    //         })
+    //         .catch(error => {
+    //             const errorMessage = error.message;
+    //             console.log(errorMessage);
+    //             setError(errorMessage)
+    //         })
 
         // console.log(email,password);
 
-    }
+    // }
 
     // handle google Login
     const handleGoogleLogin = () => {
         createUserWithGoogle()
             .then(result => {
                 const user = result.user;
+                savedUser(user)
                 navigate(from)
                 console.log(user);
             })
@@ -76,8 +78,22 @@ const Login = () => {
 
     }
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit,  formState: { errors } } = useForm();
+    const onSubmit = data => {
+        loggedInUser(data.email, data.password)
+                .then(result => {
+                    const user = result.user;
+                    savedUser(user)
+                    navigate(from)
+                    // setSuccess('user Logged in successfully')
+                    console.log(user);
+                })
+                .catch(error => {
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                    setError(errorMessage)
+                })
+    };
     return (
         <div className=' mt-4 border w-1/2 mx-auto py-12 mb-10 rounded-md shadow-lg bg-gray-100'>
             <h1 className='text-center my-4 text-3xl text-blue-500 font-bold'>Login</h1>

@@ -38,8 +38,8 @@ const Navbar = () => {
                             <li>
                                 <NavLink
                                     to='/instructor'
-                                    aria-label='About Us'
-                                    title='About Us'
+                                    aria-label='Instructor'
+                                    title='Instructor'
                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
                                 >
                                     Instructor
@@ -47,9 +47,9 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to='/blog'
-                                    aria-label='About Us'
-                                    title='About Us'
+                                    to='/class'
+                                    aria-label='class'
+                                    title='class'
                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
                                 >
                                     Classes
@@ -57,9 +57,9 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to='/blog'
-                                    aria-label='About Us'
-                                    title='About Us'
+                                    to='/dashboard'
+                                    aria-label='dashboard'
+                                    title='dashboard'
                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
                                 >
                                     Dashboard

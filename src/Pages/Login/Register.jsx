@@ -26,6 +26,7 @@ const Register = () => {
             const user = result.user;
             updateUser(data.name, data.photo)
             setUser({ ...user, displayName: data.name, photoURL: data.photo })
+            
             setSuccess('user Create successfully')
             setError('')
             navigate(from)
