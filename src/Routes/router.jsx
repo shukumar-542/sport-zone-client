@@ -13,6 +13,7 @@ import ManageUser from "../components/Dashboard/Admin/ManageUser";
 import FeedBack from "../components/FeedBack/FeedBack";
 import MySelectedClass from "../Pages/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/MyEnrolledClass/MyEnrolledClass";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
       {
         path : '/dashboard/my-enrolled-class',
         element : <MyEnrolledClass></MyEnrolledClass>
+      },
+      {
+        path : '/dashboard/payment',
+        element : <Payment></Payment>
       },
     ]
   }

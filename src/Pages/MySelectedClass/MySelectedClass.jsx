@@ -6,44 +6,41 @@ import Swal from 'sweetalert2';
 const MySelectedClass = () => {
     const [addedClass, refetch] = useClass()
     // console.log(addedClass);
-  const total = addedClass.reduce((sum, item) => item.price + sum, 0)
-  const handleDelete = (item) => {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${item._id}`, {
-          method: 'DELETE',
+    const total = addedClass.reduce((sum, item) => item.price + sum, 0)
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/booking/${item._id}`, {
+                    method: 'DELETE',
 
-        })
-          .then(res => res.json())
-          .then(data => {
-            if (data.deletedCount > 0) {
-              refetch()
-              Swal.fire(
-                'Deleted!',
-                'Your class has been deleted.',
-                'success'
-              )
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire(
+                                'Deleted!',
+                                'Your class has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
             }
-          })
-
-      }
-    })
-  }
+        })
+    }
     return (
         <div>
             <div className="h-[60px] uppercase flex justify-evenly items-center font-semibold">
 
-                <h3 className="text-2xl">total Item {addedClass.length}</h3>
-                <h3 className="text-2xl">total price :${total}  </h3>
-                <Link to="/dashboard/payment"><button className="btn btn-warning btn-sm">Pay</button></Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table">
@@ -58,7 +55,7 @@ const MySelectedClass = () => {
                             <th>Price</th>
                             <th>Action</th>
 
-                            <th></th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -87,7 +84,11 @@ const MySelectedClass = () => {
                                 <td>$ {singleClass.price}</td>
 
                                 <th>
-                                    <button onClick={()=>handleDelete(singleClass)} className="btn btn-ghost btn-xs">Delete</button>
+                                    <button onClick={() => handleDelete(singleClass)} className="btn btn-ghost btn-xs">Delete</button>
+                                </th>
+                                <th>
+                                    <Link to="/dashboard/payment" state={{singleClass}}><button className="btn btn-warning btn-sm">Pay</button></Link>
+
                                 </th>
 
                             </tr>)
