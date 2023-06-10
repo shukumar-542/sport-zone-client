@@ -2,12 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useClass from "../../hooks/useClass";
 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const {user,logOut} = useContext(AuthContext);
-   
+    const { user, logOut } = useContext(AuthContext);
+    const [addedClass] = useClass()
     const handleLogOUt = () => {
         logOut()
             .then(() => {
@@ -63,6 +64,9 @@ const Navbar = () => {
                                     className={({ isActive }) => (isActive ? 'active' : 'default')}
                                 >
                                     Dashboard
+                                    
+                                        <div className="badge badge-xs">+{addedClass?.length || 0} </div>
+                                   
                                 </NavLink>
                             </li>
 
@@ -74,10 +78,10 @@ const Navbar = () => {
                             <img src={user.photoURL} className='rounded-full' alt="" />
                         </div>}
 
-                       {user ? <button onClick={handleLogOUt} className='btn bg-white hidden lg:block text-blue-600 border-none'>logOut</button>
-                         : <Link to='/login' className='hidden lg:block'>
-                            <button className='btn bg-white text-blue-600 border-none '>Login</button>
-                        </Link>}
+                        {user ? <button onClick={handleLogOUt} className='btn bg-white hidden lg:block text-blue-600 border-none'>logOut</button>
+                            : <Link to='/login' className='hidden lg:block'>
+                                <button className='btn bg-white text-blue-600 border-none '>Login</button>
+                            </Link>}
                     </div>
 
 

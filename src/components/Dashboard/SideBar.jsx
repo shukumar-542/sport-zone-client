@@ -11,9 +11,9 @@ import { FcSettings } from 'react-icons/fc'
 const SideBar = () => {
     const navigate = useNavigate()
     const [toggle, setToggle] = useState(false)
-    const { user, logOut } = useContext(AuthContext)
-    const isAdmin = true;
-
+    const { user, logOut,role } = useContext(AuthContext)
+    const isAdmin = false;
+    // console.log(role);
     const [isActive, setActive] = useState('false')
     const toggleHandler = event => {
         setToggle(event.target.checked)
@@ -77,7 +77,7 @@ const SideBar = () => {
                     {/* Nav Items */}
                     <div className='flex flex-col justify-between flex-1 mt-6'>
                         {
-                            isAdmin ? 
+                            role && role === 'admin' ? 
                             <nav>
                             <>
 
@@ -103,7 +103,7 @@ const SideBar = () => {
                                 </NavLink>
                             </>
                         </nav>
-                            :
+                            : role && role === "instructor" ?
                             <nav>
                             <>
 
@@ -128,7 +128,33 @@ const SideBar = () => {
                                     <span className='mx-4 font-medium'>My Classes</span>
                                 </NavLink>
                             </>
-                        </nav>
+                        </nav> 
+                        :
+                        <nav>
+                            <>
+
+                                {/* Menu Links */}
+                                <NavLink
+                                    to='add-class'
+                                    className={({ isActive }) =>
+                                        `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                                        }`
+                                    }
+                                >
+
+                                    <span className='mx-4 font-medium'>My Selected Class</span>
+                                </NavLink>
+                                <NavLink
+                                    to='my-class'
+                                    className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+                                    }`
+                                }
+                                >
+                                    <span className='mx-4 font-medium'>My Enrolled Class</span>
+                                </NavLink>
+                            </>
+                        </nav> 
                         }
                     </div>
                 </div>

@@ -37,3 +37,4 @@ export const updateClassStatusDeny = async (id) =>{
     const data = await response.json()
     return data
 }
+

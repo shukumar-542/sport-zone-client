@@ -10,7 +10,7 @@ const MyClasses = () => {
         getClassByEmail(user?.email)
         .then(data => setClassData(data))
     },[user])
-    console.log(classData);
+    // console.log(classData);
     return (
         <div className="overflow-x-auto">
             <table className="table">
