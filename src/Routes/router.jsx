@@ -11,6 +11,8 @@ import MyClasses from "../Pages/Dashboard/MyClasses";
 import ManageClass from "../components/Dashboard/Admin/ManageClass";
 import ManageUser from "../components/Dashboard/Admin/ManageUser";
 import FeedBack from "../components/FeedBack/FeedBack";
+import MySelectedClass from "../Pages/MySelectedClass/MySelectedClass";
+import MyEnrolledClass from "../Pages/MyEnrolledClass/MyEnrolledClass";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +64,14 @@ export const router = createBrowserRouter([
       {
         path : '/dashboard/feedback/:id',
         element : <FeedBack></FeedBack>
+      },
+      {
+        path : '/dashboard/my-selected-class',
+        element : <MySelectedClass></MySelectedClass>
+      },
+      {
+        path : '/dashboard/my-enrolled-class',
+        element : <MyEnrolledClass></MyEnrolledClass>
       },
     ]
   }
