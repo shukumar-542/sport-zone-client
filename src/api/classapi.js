@@ -38,14 +38,19 @@ export const updateClassStatusDeny = async (id) =>{
     return data
 }
 
-// export const feedback = async (id, feedbackData)=>{
-//     // console.log(id,feedbackData);
-//     const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/feedback/${id}`, {
-//         method: 'PATCH',
-//         headers: {'content-type': 'application/json'},
-//         body: JSON.stringify(feedbackData)
-//     })
-//     const data = await response.json()
-//     return data;
-// }
+export const feedback = async (id, feedbackData)=>{
 
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/feedback/${id}`, {
+        method: 'PATCH',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(feedbackData)
+    })
+    const data = await response.json()
+    return data;
+}
+
+export const paymentHistory = async(email) =>{
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/payment/${email}`)
+    const data = await response.json();
+    return data;
+}

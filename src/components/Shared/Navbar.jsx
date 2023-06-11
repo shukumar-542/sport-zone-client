@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className='sticky top-0 bg-white shadow-md z-10'>
             <div className=' py-2 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
-                    <div className='font-bold text-3xl'>logo</div>
+                    <div className='font-bold text-3xl text-gradient'>Sport Zone</div>
                     <div>
                         <ul className='items-center hidden space-x-8 lg:flex'>
                             <li>

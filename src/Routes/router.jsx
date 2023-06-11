@@ -14,6 +14,7 @@ import FeedBack from "../components/FeedBack/FeedBack";
 import MySelectedClass from "../Pages/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/MyEnrolledClass/MyEnrolledClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import MyPaymentHistory from "../Pages/MyPaymentHistory/MyPaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +78,10 @@ export const router = createBrowserRouter([
       {
         path : '/dashboard/payment',
         element : <Payment></Payment>
+      },
+      {
+        path : '/dashboard/payment-history',
+        element : <MyPaymentHistory></MyPaymentHistory>
       },
     ]
   }

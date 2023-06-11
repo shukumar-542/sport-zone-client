@@ -89,10 +89,10 @@ const ManageClass = () => {
                         <td> {singleClass.status}</td>
                         
                         <th className=''>
-                            <button onClick={()=>handleApprove(singleClass._id)}   disabled={singleClass?.status === 'deny' || singleClass?.status === 'approved'} className="btn btn-ghost btn-xs">Approved</button>
-                            <button onClick={()=>handleDeny(singleClass._id)} className="btn btn-ghost btn-xs" disabled={singleClass?.status === 'approved' || singleClass?.status === 'deny'}>Deny</button>
+                            <button onClick={()=>handleApprove(singleClass._id)}   disabled={singleClass?.status === 'deny' || singleClass?.status === 'approved'} className="btn border-none text-white btn-xs bg-blue-500 py-1 my-2 rounded">Approved</button>
+                            <button onClick={()=>handleDeny(singleClass._id)} className="btn border-none text-white btn-xs bg-blue-500 py-1 my-2 rounded" disabled={singleClass?.status === 'approved' || singleClass?.status === 'deny'}>Deny</button>
           
-                            <Link to={`/dashboard/feedback/${singleClass._id}`} state={{id : singleClass._id}}><button className="btn btn-ghost btn-xs">FeedBack</button></Link>
+                            <Link to={`/dashboard/feedback/${singleClass._id}`} state={{id : singleClass._id}}><button className="btn border-none text-white btn-xs bg-blue-500 py-1 my-2 rounded">FeedBack</button></Link>
                         </th>
                     </tr>)
                     }

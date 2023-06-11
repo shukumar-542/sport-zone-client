@@ -1,18 +1,15 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-// import { feedback } from '../../api/classapi';
+import { useLocation} from 'react-router-dom';
+import { feedback } from '../../api/classapi';
 
 const FeedBack = () => {
     const {state} = useLocation();
-    // const id =state.id
+    const id =state.id
     // console.log(id);
     const handleFeedback=(e)=>{
         e.preventDefault();
         const name = e.target.name.value;
-        // feedback(id,name)
-        // .then(data =>{
-        //     console.log(data);
-        // })
+        feedback(id,name)
     }
 
     return (
