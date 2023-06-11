@@ -2,6 +2,8 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CheckoutForm = ({ singleClass }) => {
     const stripe = useStripe()
@@ -11,7 +13,7 @@ const CheckoutForm = ({ singleClass }) => {
     const [clientSecret, setClientSecret] = useState('')
     const { user } = useContext(AuthContext)
     // console.log(singleClass);
-
+    const navigate = useNavigate()
 
     useEffect(() => {
         if(singleClass?.price){
@@ -67,7 +69,18 @@ const CheckoutForm = ({ singleClass }) => {
               }
             axiosSecure.post('/paymentBookings',paymentInfo)
             .then(res =>{
-                console.log(res.data);
+                // console.log(res.data);
+                navigate('/dashboard/my-selected-class')
+                Swal.fire({
+                    title: 'Payment Successfully',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
+
             })
         }
 

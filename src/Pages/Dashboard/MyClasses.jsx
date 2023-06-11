@@ -58,12 +58,12 @@ const MyClasses = () => {
                         <td>$ {singleClass.price}</td>
                         <td>{singleClass.email}</td>
                         <td> {singleClass.status}</td>
-                        <td>0</td>
+                        <td>{singleClass.totalStudent}</td>
                         
                         <th>
                             <button className="btn btn-ghost btn-xs">update</button>
                         </th>
-                        <td>pending</td>
+                        <td>{singleClass?.feedback?.feedbackData}</td>
                     </tr>)
                     }
                 </tbody>

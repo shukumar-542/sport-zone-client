@@ -3,46 +3,65 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { imageUpload } from '../../api/uploadImage';
 import { classapi } from '../../api/classapi';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 const AddClass = () => {
     const { user } = useContext(AuthContext)
     const { register, handleSubmit, } = useForm();
+    const [axiosSecure] = useAxiosSecure()
+    const defaultEmail = user?.email || '';
+    const defaultName = user?.displayName || ''
 
 
     const onSubmit = (data) => {
-        // console.log(data);
+        console.log(data);
         imageUpload(data.image[0])
             .then(res => {
                 // console.log(data)
                 if (res.success) {
-                    const { name, instructor, email, price, seat,status } = data;
-                    const classData = { name, instructor, email, price: parseFloat(price), seat: parseFloat(seat),status, image: res.data.display_url }
-                    classapi(classData)
-                        .then(data => console.log(data))
-                        .catch(error => console.log(error.message))
+                    const { name, instructor, email, price, seat, status,totalStudent } = data;
+                    const classData = { name, instructor, email, price: parseFloat(price),totalStudent:parseInt(totalStudent), seat: parseFloat(seat), status, image: res.data.display_url }
+                    axiosSecure.post('/add-class', classData)
+                        .then(data => {
+                            if (data.data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Item added successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+
                 }
             })
 
 
     }
     return (
-        <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
+        <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl shadow-lg bg-gray-50'>
+
+            <h1 className='my-4 text-2xl font-bold text-blue-600'>Add You Class</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-control w-full mb-4">
-                    <label className="label">
-                        <span className="label-text font-semibold">Class Name</span>
-                    </label>
-                    <input type="text" placeholder="Class Name"
-                        {...register("name", { required: true, maxLength: 120 })}
-                        className="input input-bordered w-full " />
+                <div className='flex my-4'>
+                    <div className="form-control w-full ml-4">
+                        <label className="label">
+                            <span className="label-text font-semibold">Class Name</span>
+                        </label>
+                        <input type="text" placeholder="Class Name"
+                            {...register("name", { required: true, maxLength: 120 })}
+                            className="input input-bordered w-full " />
+                    </div>
                 </div>
                 <div className="flex my-4">
                     <div className="form-control w-full ml-4">
                         <label className="label">
                             <span className="label-text font-semibold">Instructor Name</span>
                         </label>
-                        <input type="text" {...register("instructor",)} className="input input-bordered w-full " />
+                        <input type="text" value={defaultName} {...register("instructor",)} className="input input-bordered w-full " />
                     </div>
                 </div>
                 <div className="flex my-4">
@@ -50,7 +69,7 @@ const AddClass = () => {
                         <label className="label">
                             <span className="label-text font-semibold">Instructor Email</span>
                         </label>
-                        <input type="text" {...register("email",)} className="input input-bordered w-full " />
+                        <input type="text" value={defaultEmail} {...register("email",)} className="input input-bordered w-full " />
                     </div>
                 </div>
                 <div className='flex'>
@@ -83,8 +102,15 @@ const AddClass = () => {
                             <option value="Pending">Pending</option>
                         </select>
                     </div>
+                    <div className='hidden'>
+                        <label className="label">
+                            <span className="label-text">total Student</span>
+                        </label>
+                        <input type="number" value='0' {...register("totalStudent")} placeholder="Type here" className="input input-bordered w-full " />
+                       
+                    </div>
                 </div>
-                <input className="btn btn-sm mt-4" type="submit" value="Add Item" />
+                <input className="btn my-4 w-full border-none text-white  bg-blue-500 py-1 hover:bg-blue-600 rounded" type="submit" value="Add Item" />
             </form>
         </div>
     )

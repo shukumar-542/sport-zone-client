@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import './banner.css'
-import slider1 from '../../../assets/slide1.jpg'
-import slider2 from '../../../assets/slide2.jpg'
-import slider3 from '../../../assets/slide3.jpg'
+import slider1 from '../../../assets/rugby.jpg'
+import slider2 from '../../../assets/swim-bg.jpg'
+import slider3 from '../../../assets/cover1.jpg'
 import 'swiper/css/navigation';
 
 const Banner = () => {
@@ -13,33 +13,32 @@ const Banner = () => {
         <div className='h-[450px]'>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                 <SwiperSlide>
-                    <div className=' relative'>
-                        <img src={slider1} className='' alt="" />
-                        <div className='absolute text-white top-10'>
-                            <h2>THE BEST ALTERNATIVE OF NATURE</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt 
-                                 ut labore et dolore magna aliqua</p>
-                        </div>
+                    
+
+                    <img src={slider3} className='object-contain' alt="" />
+                    <div className='absolute text-white top-28 left-20 w-1/3'>
+                        <h2 className='text-6xl font-bold text-black'>THE BEST ALTERNATIVE OF NATURE</h2>
+                        <p className='text-black my-5'>Get professional advise from experts in the sport you love!</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slider2} alt="" />
-                    <div className='absolute text-white top-20'>
-                            <h2>THE BEST ALTERNATIVE OF NATURE</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt 
-                                 ut labore et dolore magna aliqua</p>
-                        </div>
+                    <div className='absolute text-white top-32 left-20 w-1/3'>
+
+                        <h2 className='text-6xl font-bold text-black'>Train with Us </h2>
+                        <p className='text-black my-5'>We train you with the best professional trainers for the specific sport you choose.</p>
+                    </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img src={slider3} className='object-contain' alt="" />
-                    <div className='absolute text-white top-20 w-1/2'>
-                            <h2>THE BEST ALTERNATIVE OF NATURE</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt 
-                                 ut labore et dolore magna aliqua</p>
+                <div className=' relative'>
+                        <img src={slider1} className='bg-opacity-30' alt="" />
+                        <div className='absolute text-white top-32 left-20 w-1/3'>
+                            <h2 className='text-6xl font-bold'>We Create History</h2>
+                            <p className='my-5'>With lots of Features & Stylish Shortcodes makes WHiSTLE a Complete Sports Theme
+                                BE A PART OF IT
+                            </p>
                         </div>
+                    </div>
                 </SwiperSlide>
 
             </Swiper>

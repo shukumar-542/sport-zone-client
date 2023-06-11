@@ -1,22 +1,18 @@
 import React from 'react';
-import { getAllClasses, updateClassStatus, updateClassStatusDeny } from '../../../api/classapi';
+import { updateClassStatus, updateClassStatusDeny } from '../../../api/classapi';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageClass = () => {
-    // const [allClasses, setAllClasses] = useState([])
-    // useEffect(()=>{
-    //     getAllClasses()
-    //     .then(data => setAllClasses(data))
-    // },[])
-
+    const [axiosSecure] = useAxiosSecure()
     
     const {data : allClasses =[], refetch} = useQuery({
         queryKey : ['classes'],
         queryFn : async ()=>{
-            const result = await getAllClasses()
-            return result
+            const result = await axiosSecure.get('/classes')
+            return result.data
         }
 
     })

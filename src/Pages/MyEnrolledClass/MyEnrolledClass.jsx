@@ -1,14 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+
 
 const MyEnrolledClass = () => {
-    const [enrolledClasses, setEnrolledClassed] = useState([])
+    // const [enrolledClasses, setEnrolledClassed] = useState([])
+
     const { user } = useContext(AuthContext)
-    useEffect(() => {
-        fetch(`http://localhost:5000/payment/${user?.email}`)
-            .then(res => res.json())
-            .then(data => setEnrolledClassed(data))
-    }, [user])
+    const [axiosSecure] = useAxiosSecure()
+    const {data : enrolledClasses =[],refetch } = useQuery({
+        queryKey: ['users',user?.email],
+        queryFn : async () =>{
+            const result = await axiosSecure.get(`payment/${user?.email}`)
+            return result.data
+        }
+    })
+ // useEffect(() => {
+    //     fetch(`http://localhost:5000/payment/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => setEnrolledClassed(data))
+    // }, [user])
+   
     return (
         <div>
             <div className="overflow-x-auto">

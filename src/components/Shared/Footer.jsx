@@ -1,37 +1,60 @@
 import footer from '../../assets/footer.svg'
+import { AiFillFacebook } from 'react-icons/ai';
+import { FaGooglePlusG } from 'react-icons/fa';
+import { AiOutlineTwitter } from 'react-icons/ai';
 const Footer = () => {
     return (
-        <div className=''>
-            <footer className="footer p-10 bg-gradient-to-r from-cyan-400 to-blue-600 text-base-content ">
+        <div className='bg-[#2D2D2D]'>
+            <footer className=" grid grid-cols-2 md:grid-cols-3 py-10 gap-10 justify-between  ">
 
                 <div className='ms-5'>
-                    <span className="footer-title text-white">Recipe Categories</span>
-                    <a className="link link-hover text-white">Beverages</a>
-                    <a className="link link-hover text-white">Lunch</a>
-                    <a className="link link-hover text-white">Dessert</a>
-                    <a className="link link-hover text-white">Main Dishes</a>
-                </div>
-
-                <div>
-                    <span className="footer-title text-white">Legal</span>
-                    <a className="link link-hover text-white">Terms of use</a>
-                    <a className="link link-hover text-white">Privacy policy</a>
-                    <a className="link link-hover text-white">Cookie policy</a>
-                </div>
-                <div>
-                    <span className="footer-title text-white">Newsletter</span>
-                    <div className="form-control w-80">
-                        <label className="label">
-                            <span className="label-text text-white">Enter your email address</span>
-                        </label>
-                        <div className="relative">
-                            <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" />
-                            <button className="btn bg-orange-500 hover:bg-orange-600 absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                    <span className="text-4xl text-white font-bold ">Sport <span className='text-blue-600'>Z</span>one</span>
+                    <p className='text-white'>Frequently updated and covers sports ranging from football,
+                        basketball, baseball, and more. Fantasy and betting also included.
+                        Offers sports news for four other countries too, such as Canada and China.</p>
+                    <div className='mt-5 flex gap-5'>
+                        <div className='bg-[#3C3C3C] p-4 hover:bg-blue-600 cursor-pointer'>
+                            <AiFillFacebook className='text-white text-xl'></AiFillFacebook>
+                        </div>
+                        <div className='bg-[#3C3C3C] p-4 hover:bg-red-400 cursor-pointer'>
+                            <FaGooglePlusG className='text-white text-xl'></FaGooglePlusG>
+                        </div>
+                        <div className='bg-[#3C3C3C] p-4 hover:bg-blue-600 cursor-pointer'>
+                            <AiOutlineTwitter className='text-white text-xl'></AiOutlineTwitter>
                         </div>
                     </div>
                 </div>
 
+                <div className='text-white space-y-4'>
+                    <h1 className='text-white text-2xl'>About SportZone</h1>
+                    <div className='flex  gap-5'>
+                        <p>Monday - Friday</p>
+                        <p>04:00 - 12:00</p>
+                    </div>
+                    <div className='flex  gap-5'>
+                        <p>Saturday</p>
+                        <p>14:00 - 21:00</p>
+                    </div>
+                    <div className='flex  gap-5'>
+                        <p>Sunday</p>
+                        <p>Holiday</p>
+                    </div>
+                </div>
+
+                <div className=' text-white '>
+                    <h1 className='text-2xl'>UseFull Links</h1>
+                    <div className='space-y-4 mt-4 cursor-pointer'>
+                        <p className='hover:text-blue-600'>Membership Offer</p>
+                        <p className='hover:text-blue-600'>Training Scheduled</p>
+                        <p className='hover:text-blue-600'>Intern  Offer</p>
+                    </div>
+                </div>
+
+                
             </footer>
+            <div className='text-white text-center pb-4'>
+                    <p>&copy; All Copyright reserved by SportZone</p>
+                </div>
         </div>
     );
 };

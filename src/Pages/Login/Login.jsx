@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import { savedUser } from "../../api/auth";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -21,7 +22,16 @@ const Login = () => {
                 const user = result.user;
                 savedUser(user)
                 navigate(from)
-                console.log(user);
+                // console.log(user);
+                Swal.fire({
+                    title: 'Login Successfully',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
             })
             .catch(error => {
                 const errorMessage = error.message;
@@ -41,6 +51,15 @@ const Login = () => {
                 savedUser(user)
                 navigate(from)
                 // setSuccess('user Logged in successfully')
+                Swal.fire({
+                    title: 'Login Successfully',
+                    showClass: {
+                      popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                      popup: 'animate__animated animate__fadeOutUp'
+                    }
+                  })
                 console.log(user);
             })
             .catch(error => {

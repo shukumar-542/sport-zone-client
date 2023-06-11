@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 const MySelectedClass = () => {
     const [addedClass, refetch] = useClass()
     // console.log(addedClass);
-    const total = addedClass.reduce((sum, item) => item.price + sum, 0)
     const handleDelete = (item) => {
         Swal.fire({
             title: 'Are you sure?',

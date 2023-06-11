@@ -15,11 +15,14 @@ import MySelectedClass from "../Pages/MySelectedClass/MySelectedClass";
 import MyEnrolledClass from "../Pages/MyEnrolledClass/MyEnrolledClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import MyPaymentHistory from "../Pages/MyPaymentHistory/MyPaymentHistory";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayouts></MainLayouts>,
+    errorElement : <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
@@ -45,7 +48,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute> ,
     children: [
       {
         path: '/dashboard/add-class',
@@ -69,7 +72,7 @@ export const router = createBrowserRouter([
       },
       {
         path : '/dashboard/my-selected-class',
-        element : <MySelectedClass></MySelectedClass>
+        element :<MySelectedClass></MySelectedClass>
       },
       {
         path : '/dashboard/my-enrolled-class',

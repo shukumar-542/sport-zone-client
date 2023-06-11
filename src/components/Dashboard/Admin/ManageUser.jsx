@@ -2,14 +2,16 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Provider/AuthProvider';
 import { userToAdmin, userToInstructor } from '../../../api/auth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const ManageUser = () => {
     const {user} = useContext(AuthContext)
+    const [axiosSecure] = useAxiosSecure()
     const {data : users =[],refetch } = useQuery({
         queryKey: ['users',user?.email],
         queryFn : async () =>{
-            const result = await fetch('http://localhost:5000/users')
-            return result.json()
+            const result = await axiosSecure.get('/users')
+            return result.data
         }
     })
     // console.log(users);
@@ -36,7 +38,7 @@ const ManageUser = () => {
                 </thead>
                 <tbody>
                    {
-                    users.map((user,i) => <tr key={user._id}>
+                    users?.map((user,i) => <tr key={user._id}>
                         <th>{i+1}</th>
                         <td>{user.name}</td>
                         <td>{user.email}</td>

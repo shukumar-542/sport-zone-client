@@ -3,7 +3,6 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useClass from '../../hooks/useClass';
-import { getRole } from '../../api/auth';
 
 const SingleCourse = ({ item }) => {
     const { user,role } = useContext(AuthContext);
@@ -12,10 +11,7 @@ const SingleCourse = ({ item }) => {
     const [, refetch] = useClass()
     const { name, image, instructor, price, seat } = item;
 
-    // useEffect(()=>{
-    //     getRole(user.email).then(data =>console.log(data))
-    // },[user])
-    console.log(role);
+    
     const handleAddClass = (item) => {
         if (user && user.email) {
             const classItem = { classId: item._id, name, image, instructor, price, seat, email: user.email }
