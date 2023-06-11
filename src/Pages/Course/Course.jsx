@@ -11,6 +11,7 @@ const Course = () => {
         setTopClass(data)
         })
     }, [])
+    // console.log(topClass);
     return (
         <div className='my-container'>
             <div className='grid grid-cols-3 gap-5'>

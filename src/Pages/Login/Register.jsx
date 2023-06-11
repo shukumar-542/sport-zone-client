@@ -5,6 +5,7 @@ import app from '../../firebase/firebase.config';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { useForm } from "react-hook-form";
 import { savedUser } from '../../api/auth';
+import Swal from 'sweetalert2';
 
 
 
@@ -21,29 +22,50 @@ const Register = () => {
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
-        // console.log(data);
-        createUser(data.email, data.password)
-        .then(result =>{
-            const user = result.user;
-            updateUser(data.name, data.photo)
-            setUser({ ...user, displayName: data.name, photoURL: data.photo })
-            console.log(data.name);
-            const useUserDb  = {
-                email : user.email,
-                displayName  : data.name
-            }
-            savedUser(useUserDb)
-            setSuccess('user Create successfully')
-            setError('')
-            navigate(from)
-            
+        const pass = data.password
+        const rePass = data.confirmPassword
+        if (pass !== rePass) {
+            Swal.fire({
+                title: 'Password does not match!!',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
 
-        })
-        .catch(error =>{
-            const errorMessage = error.message;
-            console.log(errorMessage);
-            setError(errorMessage)
-        })
+            return;
+        }
+
+        createUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                updateUser(data.name, data.photo)
+                setUser({ ...user, displayName: data.name, photoURL: data.photo })
+                console.log(data.name);
+                const useUserDb = {
+                    email: user.email,
+                    displayName: data.name
+                }
+                savedUser(useUserDb)
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'User Create SuccessFully',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                setError('')
+                navigate(from)
+
+
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.log(errorMessage);
+                setError(errorMessage)
+            })
     }
     // update users display name and photoURl
     const updateUser = (name, photo) => {
@@ -54,20 +76,20 @@ const Register = () => {
     }
 
     return (
-        <div className=' mt-10 shadow-lg border w-1/2 mx-auto py-12 mb-10 rounded-md bg-gray-100 '>
-            <h1 className='text-center my-4 text-3xl text-blue-500 font-bold'>Register</h1>
-           
+        <div className=' mt-10 shadow-lg border w-3/4 mx-auto py-12 mb-10 rounded-md bg-gray-100 '>
+            <h1 className='text-center my-4 text-3xl text-blue-500 font-bold'>Please Register</h1>
+
 
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content ">
 
-                    <div className="card  w-full  shadow-2xl bg-base-100">
+                    <div className="  w-full   shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                            <div className="form-control">
+                            <div className="form-control w-96">
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered" />
+                                <input type="text" {...register("name", { required: true })} name="name" placeholder="Name" className="input input-bordered " />
                                 {errors.name && <span className="text-red-500">Name is required</span>}
                             </div>
                             <div className="form-control">
@@ -98,9 +120,23 @@ const Register = () => {
                                 {errors.password?.type === "maxLength" && <span className="text-red-500">Password less than 20 character </span>}
                                 {errors.password?.type === 'minLength' && <span className="text-red-500">Password must be 6 character</span>}
                                 {errors.password?.type === 'pattern' && <span className="text-red-500">Password must have one uppercase  and  one special  character</span>}
+
+                            </div>
+                            <div className="form-control">
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <span className="label-text">Confirm Password</span>
                                 </label>
+                                <input type="password" {...register("confirmPassword", {
+                                    required: true,
+                                    minLength: 6,
+                                    maxLength: 20,
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/
+
+                                })} name="confirmPassword" placeholder="password" className="input input-bordered" />
+                                {errors.password?.type === "maxLength" && <span className="text-red-500">Password less than 20 character </span>}
+                                {errors.password?.type === 'minLength' && <span className="text-red-500">Password must be 6 character</span>}
+                                {errors.password?.type === 'pattern' && <span className="text-red-500">Password must have one uppercase  and  one special  character</span>}
+
                             </div>
                             <div className="form-control mt-6">
 
@@ -110,6 +146,9 @@ const Register = () => {
                         <div className='text-center mb-4'>
                             <p>Already  Have Account ? <Link to="/login" className='text-blue-500'>Login</Link></p>
                         </div>
+                        {
+                            error && <p className='text-rose-500'>{error}</p>
+                        }
                     </div>
                 </div>
             </div>

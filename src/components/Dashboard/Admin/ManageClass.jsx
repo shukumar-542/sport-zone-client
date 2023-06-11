@@ -2,6 +2,7 @@ import React from 'react';
 import { getAllClasses, updateClassStatus, updateClassStatusDeny } from '../../../api/classapi';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const ManageClass = () => {
     // const [allClasses, setAllClasses] = useState([])
@@ -39,6 +40,8 @@ const ManageClass = () => {
     //     const feedback = e.target.modal.value;
     //     console.log(feedback);
     // }
+
+   
 
     return (
         <div className="overflow-x-auto">

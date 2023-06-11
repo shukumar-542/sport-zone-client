@@ -30,21 +30,8 @@ const Login = () => {
             })
     }
 
-    // handle github login
-    const handelGithubLogin = () => {
-        createUserWithGithub()
-            .then(result => {
-                const user = result.user;
-                navigate(from)
-                console.log(user);
-            })
-            .catch(error => {
-                const errorMessage = error.message;
-                console.log(errorMessage);
-                setError(errorMessage)
-            })
-
-    }
+ 
+   
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -97,7 +84,6 @@ const Login = () => {
             </div>
             <div className='flex flex-col w-1/2 mx-auto space-y-2  mt-10'>
                 <button onClick={handleGoogleLogin} className='border border-blue-600 px-8 py-2 rounded-lg hover:bg-blue-500 '>Login With Google</button>
-                <button onClick={handelGithubLogin} className='border border-blue-500 px-8 py-2 rounded-lg hover:bg-blue-500 '>Login With Github</button>
 
             </div>
         </div>
