@@ -12,6 +12,14 @@ const Banner = () => {
     return (
         <div className='h-[450px]'>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+            <SwiperSlide>
+                    <img src={slider2} alt="" />
+                    <div className='absolute text-white top-32 md:left-[50%] w-1/3'>
+
+                        <h2 className='md:text-6xl font-bold text-black'>Train with Us </h2>
+                        <p className='text-black my-5'>We train you with the best professional trainers for the specific sport you choose.</p>
+                    </div>
+                </SwiperSlide>
                 <SwiperSlide>
                     
 
@@ -21,14 +29,7 @@ const Banner = () => {
                         <p className='text-black my-5'>Get professional advise from experts in the sport you love!</p>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide>
-                    <img src={slider2} alt="" />
-                    <div className='absolute text-white top-32 md:left-20 w-1/3'>
-
-                        <h2 className='md:text-6xl font-bold text-black'>Train with Us </h2>
-                        <p className='text-black my-5'>We train you with the best professional trainers for the specific sport you choose.</p>
-                    </div>
-                </SwiperSlide>
+               
                 <SwiperSlide>
                 <div className=' relative h-full'>
                         <img src={slider1} className='bg-opacity-30' alt="" />

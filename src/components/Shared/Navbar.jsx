@@ -35,7 +35,7 @@ const Navbar = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
     return (
-        <div className='sticky top-0  bg-white shadow-md z-10'>
+        <div className='sticky top-0  bg-blue-100 shadow-md z-10'>
             <div className=' py-2 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
                     <div className='font-bold text-3xl text-gradient'>Sport<span className="text-blue-600">Z</span>one</div>
