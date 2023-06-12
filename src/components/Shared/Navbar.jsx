@@ -99,7 +99,7 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    <div className="flex" >
+                    <div className="flex items-center" >
                         {user && <div className="w-10 rounded-full tooltip tooltip-bottom">
                             <img src={user.photoURL} className='rounded-full' alt="" />
                         </div>}
