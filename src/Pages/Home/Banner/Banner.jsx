@@ -7,6 +7,7 @@ import slider1 from '../../../assets/rugby.jpg'
 import slider2 from '../../../assets/swim-bg.jpg'
 import slider3 from '../../../assets/cover1.jpg'
 import 'swiper/css/navigation';
+import { Fade } from 'react-awesome-reveal';
 
 const Banner = () => {
     return (
@@ -16,7 +17,7 @@ const Banner = () => {
                     <img src={slider2} alt="" />
                     <div className='absolute text-white top-32 md:left-[50%] w-1/3'>
 
-                        <h2 className='md:text-6xl font-bold text-black'>Train with Us </h2>
+                        <h2 className='md:text-6xl font-bold text-black'><Fade cascade dumping={5}>Train with Us</Fade> </h2>
                         <p className='text-black my-5'>We train you with the best professional trainers for the specific sport you choose.</p>
                     </div>
                 </SwiperSlide>

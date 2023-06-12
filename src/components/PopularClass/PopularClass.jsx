@@ -8,9 +8,9 @@ const PopularClass = () => {
     const [axiosSecure] = useAxiosSecure()
 
     const {data : topClass =[]} = useQuery({
-        queryKey : ['classes'],
+        queryKey : ['popular'],
         queryFn : async ()=>{
-            const result = await axiosSecure.get('/classes')
+            const result = await axiosSecure.get('/popular/classes')
             return result.data
         }
 

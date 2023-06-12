@@ -18,7 +18,6 @@ import MyPaymentHistory from "../Pages/MyPaymentHistory/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import UpdateClass from "../Pages/Dashboard/updateClass/updateClass";
-import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +61,11 @@ export const router = createBrowserRouter([
       },
       {
         path : '/dashboard/manage-class',
-        element : <AdminRoute><ManageClass></ManageClass></AdminRoute>
+        element : <ManageClass></ManageClass>
       },
       {
         path : '/dashboard/manage-user',
-        element : <AdminRoute><ManageUser></ManageUser></AdminRoute>
+        element : <ManageUser></ManageUser>
       },
       {
         path : '/dashboard/feedback/:id',

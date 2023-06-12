@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
             // get and set token
             // console.log(loggedUser.email);
             if (loggedUser) {
-                axios.post(`${import.meta.env.VITE_API_URL}/jwt`, {
+                axios.post(`https://sport-zone-server.vercel.app/jwt`, {
                     email: loggedUser.email
                 })
                     .then(data => {
