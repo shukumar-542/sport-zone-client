@@ -100,7 +100,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex items-center" >
-                        {user && <div className="w-10 rounded-full tooltip tooltip-bottom">
+                        {user && <div className="w-10 mr-2 rounded-full tooltip tooltip-bottom">
                             <img src={user.photoURL} className='rounded-full' alt="" />
                         </div>}
 

@@ -4,8 +4,8 @@ import { FaGooglePlusG } from 'react-icons/fa';
 import { AiOutlineTwitter } from 'react-icons/ai';
 const Footer = () => {
     return (
-        <div className='bg-[#2D2D2D] my-container'>
-            <footer className=" grid grid-cols-1 md:grid-cols-3 py-10 gap-10 justify-between  ">
+        <div className='bg-[#2D2D2D] '>
+            <footer className=" px-5 grid grid-cols-1 md:grid-cols-3 py-10 gap-10 justify-between  ">
 
                 <div className=''>
                     <span className="text-4xl text-white font-bold ">Sport <span className='text-blue-600'>Z</span>one</span>

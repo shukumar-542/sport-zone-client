@@ -12,7 +12,8 @@ const PopularInstructor = () => {
             })
     }, [])
     return (
-        <div className='my-container bg-blue-100'>
+       <div className='bg-blue-100'>
+         <div className='my-container '>
             <h1 className='text-center font-bold py-4 text-4xl'>Our Best Instructor</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 '>
                 {
@@ -20,6 +21,7 @@ const PopularInstructor = () => {
                 }
             </div>
         </div>
+       </div>
     );
 };
 
