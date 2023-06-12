@@ -20,25 +20,25 @@ const Navbar = () => {
             });
     }
 
-    const [theme, setTheme] =  useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
-   
-   const handleToggle = (e)=>{
-    if(e.target.checked){
-        setTheme('dark')
-    }else{
-        setTheme('light')
+    // dark and light mode 
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
+    const handleToggle = (e) => {
+        if (e.target.checked) {
+            setTheme('dark')
+        } else {
+            setTheme('light')
+        }
     }
-   }
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem('theme', theme)
         const localTheme = localStorage.getItem('theme')
-        document.querySelector('html').setAttribute('data-theme' ,localTheme)
-    },[theme])
+        document.querySelector('html').setAttribute('data-theme', localTheme)
+    }, [theme])
     return (
-        <div className='sticky top-0 bg-white shadow-md z-10'>
+        <div className='sticky top-0  bg-white shadow-md z-10'>
             <div className=' py-2 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
-                    <div className='font-bold text-3xl text-gradient'>Sport Zone</div>
+                    <div className='font-bold text-3xl text-gradient'>Sport<span className="text-blue-600">Z</span>one</div>
                     <div>
                         <label className="swap swap-rotate">
 

@@ -9,7 +9,7 @@ const SingleClass = ({item}) => {
                 <p>Instructor Name : {item.instructorName}</p>
                 <div className='flex'>
                     <p>price :{item.price} </p>
-                    <p>available Seta : {item.availableSeat}</p>
+                    <p>available Seta : {item.seat}</p>
                 </div>
                 
             </div>

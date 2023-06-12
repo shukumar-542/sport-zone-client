@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import SingleClass from './SingleClass';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const PopularClass = () => {
-    const [topClass, setTopClass] = useState([])
-    useEffect(() => {
-        fetch('class.json')
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setTopClass(data)
-            })
-    }, [])
+   
+    const [axiosSecure] = useAxiosSecure()
+
+    const {data : topClass =[], refetch} = useQuery({
+        queryKey : ['classes'],
+        queryFn : async ()=>{
+            const result = await axiosSecure.get('/classes')
+            return result.data
+        }
+
+    })
+    const sliceTopClass = topClass.slice(0,6)
     return (
         <div className='my-container'>
             <h1 className='text-center font-bold py-4 text-4xl'>Our Best Classes</h1>
             <div className='grid grid-cols-3 gap-5 '>
                 {
-                    topClass.map((item, i) => <SingleClass key={i} item={item}></SingleClass>)
+                    sliceTopClass.map((item, i) => <SingleClass key={i} item={item}></SingleClass>)
                 }
             </div>
 
