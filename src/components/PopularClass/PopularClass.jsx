@@ -7,7 +7,7 @@ const PopularClass = () => {
    
     const [axiosSecure] = useAxiosSecure()
 
-    const {data : topClass =[], refetch} = useQuery({
+    const {data : topClass =[]} = useQuery({
         queryKey : ['classes'],
         queryFn : async ()=>{
             const result = await axiosSecure.get('/classes')
@@ -15,11 +15,11 @@ const PopularClass = () => {
         }
 
     })
-    const sliceTopClass = topClass.slice(0,6)
+    const sliceTopClass = topClass?.slice(0,6)
     return (
         <div className='my-container'>
             <h1 className='text-center font-bold py-4 text-4xl'>Our Best Classes</h1>
-            <div className='grid grid-cols-3 gap-5 '>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-5 '>
                 {
                     sliceTopClass.map((item, i) => <SingleClass key={i} item={item}></SingleClass>)
                 }

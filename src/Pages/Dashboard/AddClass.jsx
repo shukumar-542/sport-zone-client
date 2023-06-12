@@ -16,7 +16,7 @@ const AddClass = () => {
 
 
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         imageUpload(data.image[0])
             .then(res => {
                 // console.log(data)

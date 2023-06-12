@@ -2,13 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/solid'
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
-import useClass from "../../hooks/useClass";
+// import useClass from "../../hooks/useClass";
 
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
-    const [addedClass] = useClass()
+    // const [addedClass] = useClass()
     // console.log(addedClass);
     const handleLogOUt = () => {
         logOut()
@@ -91,7 +91,7 @@ const Navbar = () => {
                                 >
                                     Dashboard
 
-                                    <div className="badge badge-xs">+{addedClass?.length || 0} </div>
+                                    {/* <div className="badge badge-xs">+{addedClass?.length || 0} </div> */}
 
                                 </NavLink>
                             </li>
@@ -129,7 +129,7 @@ const Navbar = () => {
                                     <div className='p-5 bg-white border rounded shadow-sm'>
                                         <div className='flex items-center justify-between mb-4'>
                                             <div>
-                                                <h1 className='font-bold text-2xl'>Logo</h1>
+                                                <h1 className='font-bold text-2xl'>SportZone</h1>
                                             </div>
                                             <div>
                                                 <button
@@ -157,9 +157,9 @@ const Navbar = () => {
                                                 </li>
                                                 <li>
                                                     <NavLink
-                                                        to='/blog'
-                                                        aria-label='About Us'
-                                                        title='About Us'
+                                                        to='/instructor'
+                                                        aria-label='instructor'
+                                                        title='instructor'
                                                         className={({ isActive }) => (isActive ? 'active' : 'default')}
                                                     >
                                                         Instructor
@@ -167,9 +167,9 @@ const Navbar = () => {
                                                 </li>
                                                 <li>
                                                     <NavLink
-                                                        to='/blog'
-                                                        aria-label='About Us'
-                                                        title='About Us'
+                                                        to='/classes'
+                                                        aria-label='classes'
+                                                        title='classes'
                                                         className={({ isActive }) => (isActive ? 'active' : 'default')}
                                                     >
                                                         Classes
@@ -177,9 +177,9 @@ const Navbar = () => {
                                                 </li>
                                                 <li>
                                                     <NavLink
-                                                        to='/blog'
-                                                        aria-label='About Us'
-                                                        title='About Us'
+                                                        to='/dashboard'
+                                                        aria-label='dashboard'
+                                                        title='dashboard'
                                                         className={({ isActive }) => (isActive ? 'active' : 'default')}
                                                     >
                                                         Dashboard
@@ -190,16 +190,20 @@ const Navbar = () => {
                                                     <img src="" className='rounded-full' alt="" />
                                                 </div>
 
-
-
-                                                <li>
+                                                {
+                                                    user ?   <li>
                                                     <button className='btn-primary '>LogOut</button>
                                                 </li>
-                                                <Link to='/login'>
+                                                    :
+                                                    <Link to='/login'>
                                                     <li>
                                                         <button className='btn-primary '>Login</button>
                                                     </li>
                                                 </Link>
+                                                }
+
+                                               
+                                               
 
 
                                             </ul>

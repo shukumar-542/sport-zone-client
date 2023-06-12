@@ -4,10 +4,10 @@ import { FaGooglePlusG } from 'react-icons/fa';
 import { AiOutlineTwitter } from 'react-icons/ai';
 const Footer = () => {
     return (
-        <div className='bg-[#2D2D2D]'>
-            <footer className=" grid grid-cols-2 md:grid-cols-3 py-10 gap-10 justify-between  ">
+        <div className='bg-[#2D2D2D] my-container'>
+            <footer className=" grid grid-cols-1 md:grid-cols-3 py-10 gap-10 justify-between  ">
 
-                <div className='ms-5'>
+                <div className=''>
                     <span className="text-4xl text-white font-bold ">Sport <span className='text-blue-600'>Z</span>one</span>
                     <p className='text-white'>Frequently updated and covers sports ranging from football,
                         basketball, baseball, and more. Fantasy and betting also included.
@@ -41,20 +41,28 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className=' text-white '>
-                    <h1 className='text-2xl'>UseFull Links</h1>
-                    <div className='space-y-4 mt-4 cursor-pointer'>
+                <div className='  '>
+                    <h1 className='text-2xl text-white'>UseFull Links</h1>
+                    <div className='space-y-4 mt-4 cursor-pointer text-white'>
                         <p className='hover:text-blue-600'>Membership Offer</p>
                         <p className='hover:text-blue-600'>Training Scheduled</p>
                         <p className='hover:text-blue-600'>Intern  Offer</p>
                     </div>
+                    <div className="form-control mt-5">
+                        <div className="input-group">
+                            <input type="text" placeholder="Email....." className="input input-bordered bg-gray-100" />
+                            <button className="btn ">
+                                Send
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
-                
+
             </footer>
             <div className='text-white text-center pb-4'>
-                    <p>&copy; All Copyright reserved by SportZone</p>
-                </div>
+                <p>&copy; All Copyright reserved by SportZone</p>
+            </div>
         </div>
     );
 };

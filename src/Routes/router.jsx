@@ -17,6 +17,8 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import MyPaymentHistory from "../Pages/MyPaymentHistory/MyPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import UpdateClass from "../Pages/Dashboard/updateClass/updateClass";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -60,11 +62,11 @@ export const router = createBrowserRouter([
       },
       {
         path : '/dashboard/manage-class',
-        element : <ManageClass></ManageClass>
+        element : <AdminRoute><ManageClass></ManageClass></AdminRoute>
       },
       {
         path : '/dashboard/manage-user',
-        element : <ManageUser></ManageUser>
+        element : <AdminRoute><ManageUser></ManageUser></AdminRoute>
       },
       {
         path : '/dashboard/feedback/:id',
@@ -86,6 +88,12 @@ export const router = createBrowserRouter([
         path : '/dashboard/payment-history',
         element : <MyPaymentHistory></MyPaymentHistory>
       },
+      {
+        path : '/dashboard/update/:id',
+        element :<UpdateClass></UpdateClass>,
+        loader : ({params})=> fetch(`https://sport-zone-server.vercel.app/class/${params.id}`)
+
+      }
     ]
   }
 ]);

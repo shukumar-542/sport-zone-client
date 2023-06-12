@@ -16,24 +16,24 @@ const Banner = () => {
                     
 
                     <img src={slider3} className='object-contain' alt="" />
-                    <div className='absolute text-white top-28 left-20 w-1/3'>
-                        <h2 className='text-6xl font-bold text-black'>THE BEST ALTERNATIVE OF NATURE</h2>
+                    <div className='absolute text-white top-28 md:left-20 w-1/3'>
+                        <h2 className='md:text-6xl font-bold text-black'>THE BEST ALTERNATIVE OF NATURE</h2>
                         <p className='text-black my-5'>Get professional advise from experts in the sport you love!</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slider2} alt="" />
-                    <div className='absolute text-white top-32 left-20 w-1/3'>
+                    <div className='absolute text-white top-32 md:left-20 w-1/3'>
 
-                        <h2 className='text-6xl font-bold text-black'>Train with Us </h2>
+                        <h2 className='md:text-6xl font-bold text-black'>Train with Us </h2>
                         <p className='text-black my-5'>We train you with the best professional trainers for the specific sport you choose.</p>
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                <div className=' relative'>
+                <div className=' relative h-full'>
                         <img src={slider1} className='bg-opacity-30' alt="" />
                         <div className='absolute text-white top-32 left-20 w-1/3'>
-                            <h2 className='text-6xl font-bold'>We Create History</h2>
+                            <h2 className='md:text-6xl font-bold'>We Create History</h2>
                             <p className='my-5'>With lots of Features & Stylish Shortcodes makes WHiSTLE a Complete Sports Theme
                                 BE A PART OF IT
                             </p>

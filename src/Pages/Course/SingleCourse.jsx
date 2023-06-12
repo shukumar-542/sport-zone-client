@@ -2,20 +2,20 @@ import React, { useContext, useEffect } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
-import useClass from '../../hooks/useClass';
+// import useClass from '../../hooks/useClass';
 
 const SingleCourse = ({ item }) => {
     const { user,role } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const [, refetch] = useClass()
+    // const [, refetch] = useClass()
     const { name, image, instructor, price, seat } = item;
 
     
     const handleAddClass = (item) => {
         if (user && user.email) {
             const classItem = { classId: item._id, name, image, instructor, price, seat, email: user.email }
-            fetch('http://localhost:5000/booking', {
+            fetch('https://sport-zone-server.vercel.app/booking', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(classItem)
@@ -23,7 +23,7 @@ const SingleCourse = ({ item }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        refetch()
+                        // refetch()
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',

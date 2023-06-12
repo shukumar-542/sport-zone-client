@@ -46,7 +46,8 @@ const Register = () => {
                 console.log(data.name);
                 const useUserDb = {
                     email: user.email,
-                    displayName: data.name
+                    displayName: data.name,
+                    image: data.photo
                 }
                 savedUser(useUserDb)
                 Swal.fire({
@@ -55,7 +56,7 @@ const Register = () => {
                     title: 'User Create SuccessFully',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                })
                 setError('')
                 navigate(from)
 
@@ -97,14 +98,14 @@ const Register = () => {
                                     <span className="label-text">Photo URL</span>
                                 </label>
                                 <input type="text" {...register("photo", { required: true })} name="photo" placeholder="Photo URl" className="input input-bordered" />
-                                {errors.name && <span className="text-red-500">Name is required</span>}
+                                {errors.photo && <span className="text-red-500">Photo is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
                                 <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
-                                {errors.name && <span className="text-red-500">Email is required</span>}
+                                {errors.email && <span className="text-red-500">Email is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">

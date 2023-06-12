@@ -31,11 +31,7 @@ const ManageClass = () => {
         })
     }
 
-    // const handleModal = (e) => {
-    //     e.preventDefault()
-    //     const feedback = e.target.modal.value;
-    //     console.log(feedback);
-    // }
+   
 
    
 

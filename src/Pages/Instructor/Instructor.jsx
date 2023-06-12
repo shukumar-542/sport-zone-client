@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import SingleInstructor from '../../components/PopularInstructor/SingleInstructor';
 
 const Instructor = () => {
+   
+
     const [instructors, setInstructor] = useState([])
     useEffect(() => {
-        fetch('instructor.json')
+        fetch('https://sport-zone-server.vercel.app/instructor')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

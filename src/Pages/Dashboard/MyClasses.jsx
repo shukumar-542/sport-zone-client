@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { getClassByEmail } from '../../api/classapi';
 import { AuthContext } from '../../Provider/AuthProvider';
 import SingleClass from '../../components/PopularClass/SingleClass';
+import { Link } from 'react-router-dom';
 
 const MyClasses = () => {
     const {user} = useContext(AuthContext)
@@ -11,6 +12,9 @@ const MyClasses = () => {
         .then(data => setClassData(data))
     },[user])
     // console.log(classData);
+    const handleUpdate=(id)=>{
+        console.log(id);
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table">
@@ -61,7 +65,7 @@ const MyClasses = () => {
                         <td>{singleClass.totalStudent}</td>
                         
                         <th>
-                            <button className="btn btn-ghost btn-xs">update</button>
+                           <Link to={`/dashboard/update/${singleClass._id}`}> <button className="btn btn-ghost btn-xs" >update</button></Link>
                         </th>
                         <td>{singleClass?.feedback?.feedbackData}</td>
                     </tr>)

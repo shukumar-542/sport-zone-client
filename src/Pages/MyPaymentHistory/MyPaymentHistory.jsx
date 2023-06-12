@@ -1,15 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
-import { paymentHistory } from '../../api/classapi';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const MyPaymentHistory = () => {
     const { user } = useContext(AuthContext);
-    // console.log(user);
-    const [payments, setPayments] = useState([])
-    useEffect(() => {
-        paymentHistory(user?.email)
-            .then(data => setPayments(data))
-    }, [user])
+   
+    const [axiosSecure] = useAxiosSecure()
+    const {data : payments =[], refetch} = useQuery({
+        queryKey : ['payment', user?.email],
+        queryFn : async ()=>{
+            const result = await axiosSecure.get(`/payment/${user?.email}`)
+            return result.data
+        }
+
+    })
     return (
         <div>
             <div className="overflow-x-auto">
@@ -26,7 +31,7 @@ const MyPaymentHistory = () => {
                     </thead>
                     <tbody>
                         {
-                            payments.map((payment,i) =><tr key={payment._id}>
+                            payments?.map((payment,i) =><tr key={payment._id}>
                                 <th>{i+1}</th>
                                 <td>{payment.name}</td>
                                 <td>{payment.instructor}</td>
