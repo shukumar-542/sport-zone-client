@@ -10,7 +10,7 @@ import 'swiper/css/navigation';
 
 const Banner = () => {
     return (
-        <div className='h-[450px]'>
+        <div className='h-[450px] '>
             <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
             <SwiperSlide>
                     <img src={slider2} alt="" />
