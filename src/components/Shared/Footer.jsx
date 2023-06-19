@@ -2,6 +2,7 @@ import footer from '../../assets/footer.svg'
 import { AiFillFacebook } from 'react-icons/ai';
 import { FaGooglePlusG } from 'react-icons/fa';
 import { AiOutlineTwitter } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <div className='bg-[#2D2D2D] '>
@@ -14,10 +15,10 @@ const Footer = () => {
                         Offers sports news for four other countries too, such as Canada and China.</p>
                     <div className='mt-5 flex gap-5'>
                         <div className='bg-[#3C3C3C] p-4 hover:bg-blue-600 cursor-pointer'>
-                            <AiFillFacebook className='text-white text-xl'></AiFillFacebook>
+                           <a href='https://www.facebook.com/'> <AiFillFacebook className='text-white text-xl'></AiFillFacebook></a>
                         </div>
                         <div className='bg-[#3C3C3C] p-4 hover:bg-red-400 cursor-pointer'>
-                            <FaGooglePlusG className='text-white text-xl'></FaGooglePlusG>
+                            <a href=""><FaGooglePlusG className='text-white text-xl'></FaGooglePlusG></a>
                         </div>
                         <div className='bg-[#3C3C3C] p-4 hover:bg-blue-600 cursor-pointer'>
                             <AiOutlineTwitter className='text-white text-xl'></AiOutlineTwitter>
@@ -43,9 +44,10 @@ const Footer = () => {
 
                 <div className='  '>
                     <h1 className='text-2xl text-white'>UseFull Links</h1>
-                    <div className='space-y-4 mt-4 cursor-pointer text-white'>
-                        <p className='hover:text-blue-600'>Membership Offer</p>
-                        <p className='hover:text-blue-600'>Training Scheduled</p>
+                    <div className='space-y-5 mt-4 cursor-pointer text-white '>
+                        <Link to='/'><p className='hover:text-blue-600 mb-2'>Home</p></Link>
+                        <Link to='/instructor'><p className='hover:text-blue-600 mb-2'>Instructor</p></Link>
+                        <Link to="/class"><p className='hover:text-blue-600'>Classes</p></Link>
                         <p className='hover:text-blue-600'>Intern  Offer</p>
                     </div>
                     <div className="form-control mt-5">

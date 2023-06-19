@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
       {
         path : '/dashboard/update/:id',
         element :<UpdateClass></UpdateClass>,
-        loader : ({params})=> fetch(`http://localhost:5000/class/${params.id}`)
+        loader : ({params})=> fetch(`https://sport-zone-server.vercel.app/class/${params.id}`)
 
       }
     ]

@@ -4,7 +4,7 @@ import SingleInstructor from './SingleInstructor';
 const PopularInstructor = () => {
     const [instructors, setInstructor] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/instructor')
+        fetch('https://sport-zone-server.vercel.app/instructor')
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

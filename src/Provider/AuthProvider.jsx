@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
             // get and set token
             // console.log(loggedUser.email);
             if (loggedUser) {
-                axios.post(`http://localhost:5000/jwt`, {
+                axios.post(`https://sport-zone-server.vercel.app/jwt`, {
                     email: loggedUser.email
                 })
                     .then(data => {

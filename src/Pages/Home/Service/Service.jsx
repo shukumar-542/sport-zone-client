@@ -7,10 +7,8 @@ const Service = () => {
         <div className='my-container'>
 
             <Parallax
-                blur={{ min: -15, max: 10 }}
                 bgImage={img}
-                bgImageAlt="the dog"
-                strength={200}
+                strength={600}
             >
                <div className="hero min-h-screen" >
                 <div className="hero-overlay bg-opacity-60"></div>

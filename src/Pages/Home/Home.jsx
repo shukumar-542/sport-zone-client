@@ -6,6 +6,7 @@ import Service from "./Service/Service";
 import Sports from "./Sports/Sports";
 import Blog from "./Blog/Blog";
 import Subscription from "./Subscription/Subscription";
+import Article from "./Article/Article";
 
 const Home = () => {
     return (
@@ -17,7 +18,8 @@ const Home = () => {
             <Service></Service>
             <PopularInstructor></PopularInstructor>
             <Subscription></Subscription>
-            {/* <Blog></Blog> */}
+            <Blog></Blog>
+            <Article></Article>
         </div>
     );
 };

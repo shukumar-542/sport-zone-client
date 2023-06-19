@@ -17,9 +17,9 @@ const PopularClass = () => {
     })
     const sliceTopClass = topClass?.slice(0,6)
     return (
-       <div className=' bg-blue-100'>
+       <div className=' '>
          <div className='my-container'>
-            <h1 className='text-center font-bold py-4 text-4xl text-blue-600 '>Our Best Classes</h1>
+            <h1 className='text-center font-bold py-4 text-4xl text-blue-600'>Our Best Classes</h1>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5 '>
                 {
                     sliceTopClass.map((item, i) => <SingleClass key={i} item={item}></SingleClass>)
