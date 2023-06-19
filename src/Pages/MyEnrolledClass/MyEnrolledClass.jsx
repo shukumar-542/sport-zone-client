@@ -17,7 +17,7 @@ const MyEnrolledClass = () => {
         }
     })
  // useEffect(() => {
-    //     fetch(`https://sport-zone-server.vercel.app/payment/${user?.email}`)
+    //     fetch(`http://localhost:5000/payment/${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => setEnrolledClassed(data))
     // }, [user])

@@ -5,7 +5,7 @@ export const savedUser = (user)=>{
         name : user.displayName,
         image : user.image
     }
-    fetch(`https://sport-zone-server.vercel.app/users/${user?.email}`,{
+    fetch(`http://localhost:5000/users/${user?.email}`,{
         method : 'PUT',
         headers : {'content-type' : 'application/json'},
         body : JSON.stringify(currentUser)
@@ -19,7 +19,7 @@ export const savedUser = (user)=>{
 
 // set user to admin
 export const userToAdmin = (id) =>{
-    fetch(`https://sport-zone-server.vercel.app/users/admin/${id}`,{
+    fetch(`http://localhost:5000/users/admin/${id}`,{
         method : 'PATCH',
         headers : {'content-type' : 'application/json'},
     })
@@ -30,7 +30,7 @@ export const userToAdmin = (id) =>{
 
 }
 export const userToInstructor = (id) =>{
-    fetch(`https://sport-zone-server.vercel.app/users/instructor/${id}`,{
+    fetch(`http://localhost:5000/users/instructor/${id}`,{
         method : 'PATCH',
         headers : {'content-type' : 'application/json'},
     })
@@ -43,7 +43,7 @@ export const userToInstructor = (id) =>{
 
 // get all user role
 export const getRole = async email =>{
-    const response  =await fetch(`https://sport-zone-server.vercel.app/users/${email}`)
+    const response  =await fetch(`http://localhost:5000/users/${email}`)
     const user =await response.json()
     return user?.role
 

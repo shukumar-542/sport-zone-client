@@ -15,7 +15,7 @@ const SingleCourse = ({ item }) => {
     const handleAddClass = (item) => {
         if (user && user.email) {
             const classItem = { classId: item._id, name, image, instructor, price, seat, email: user.email }
-            fetch('https://sport-zone-server.vercel.app/booking', {
+            fetch('http://localhost:5000/booking', {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(classItem)

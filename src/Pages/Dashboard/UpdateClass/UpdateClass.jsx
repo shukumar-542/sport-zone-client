@@ -16,7 +16,7 @@ const UpdateClass = () => {
         const seat = form.seat.value;
         const newUpdatedClass = {name,seat,price};
         console.log(newUpdatedClass);
-        fetch(`https://sport-zone-server.vercel.app/update/${updateClass._id}`,{
+        fetch(`http://localhost:5000/update/${updateClass._id}`,{
             method :"PATCH",
             headers : {"content-type" : "application/json"},
             body : JSON.stringify(newUpdatedClass)
