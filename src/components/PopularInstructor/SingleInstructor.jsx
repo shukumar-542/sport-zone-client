@@ -1,6 +1,8 @@
 import React from 'react';
 
 const SingleInstructor = ({instructor}) => {
+    console.log(instructor);
+
     return (
         <div className=" bg-white shadow-xl p-4">
             <figure><img src={instructor.image} alt="Shoes" className='w-full h-52' /></figure>

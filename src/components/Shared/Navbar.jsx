@@ -35,10 +35,10 @@ const Navbar = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
     return (
-        <div className='sticky top-0  bg-blue-100 shadow-md z-10 '>
-            <div className=' py-2 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
+        <div className='sticky top-0  bg-[#030303]  text-white bg-opacity-50 shadow-md z-10 '>
+            <div className=' py-4 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
-                    <div className='font-bold text-3xl text-gradient'>Sport<span className="text-blue-600">Z</span>one</div>
+                    <div className='font-bold text-4xl text-gradient'>Sport<span className="text-blue-600">Z</span>one</div>
                     <div>
                         <label className="swap swap-rotate">
 
@@ -51,13 +51,13 @@ const Navbar = () => {
                         </label>
                     </div>
                     <div>
-                        <ul className='items-center hidden space-x-8 lg:flex'>
-                            <li>
+                        <ul className='items-center uppercase  hidden space-x-8 lg:flex'>
+                            <li >
                                 <NavLink
                                     to='/'
                                     aria-label='Home'
                                     title='Home'
-                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                    className={({ isActive }) => (isActive ? 'active' : 'default') }
                                 >
                                     Home
                                 </NavLink>
@@ -106,7 +106,7 @@ const Navbar = () => {
 
                         {user ? <button onClick={handleLogOUt} className='btn bg-white hidden lg:block text-blue-600 border-none'>logOut</button>
                             : <Link to='/login' className='hidden lg:block'>
-                                <button className='btn bg-white text-blue-600 border-none '>Login</button>
+                                <button className='px-3 font-semibold py-2 bg-white text-blue-600 border-none '>Login</button>
                             </Link>}
                     </div>
 
