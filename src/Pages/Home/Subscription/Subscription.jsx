@@ -14,8 +14,10 @@ const Subscription = () => {
                 <p>EXCLUSIVE TRAINING PACKAGES</p>
             </div>
             <div className='my-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                <div data-aos="zoom-in-right" data-aos-delay="300" className='border group hover:border-blue-500'>
-                    <img src={c7} alt="" />
+                <div data-aos="zoom-in-right" data-aos-delay="300" className='border  group hover:border-blue-500'>
+                    <div className='overflow-hidden'>
+                    <img src={c7} className='group-hover:scale-110 transition duration-500' alt="" />
+                    </div>
                     <div className='px-5 py-5 space-y-4'>
                         <div>
                             <h2 className='font-semibold'>SWIMMING COACH</h2>
@@ -30,7 +32,9 @@ const Subscription = () => {
                     </div>
                 </div>
                 <div  data-aos="zoom-out-down" data-aos-delay="300" className='border group hover:border-blue-500'>
-                    <img src={c8} alt="" />
+                    <div className='overflow-hidden'>
+                    <img src={c8} className='group-hover:scale-110 transition duration-500' alt="" />
+                    </div>
                     <div className='px-5 py-5 space-y-4'>
                         <div>
                             <h2 className='font-semibold'>TENNIS CHAMPION</h2>
@@ -45,7 +49,9 @@ const Subscription = () => {
                     </div>
                 </div>
                 <div data-aos="fade-up-right" data-aos-delay="300" className='border group hover:border-blue-500'>
-                    <img src={c9} alt="" />
+                    <div className='overflow-hidden'>
+                    <img src={c9} className='group-hover:scale-110 transition duration-500' alt="" />
+                    </div>
                     <div className='px-5 py-5 space-y-4'>
                         <div>
                             <h2 className='font-semibold'>TREKKING PRACTICE</h2>
