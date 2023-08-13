@@ -1,20 +1,36 @@
 import React from 'react';
+import './style.css'
+import { FaLinkedinIn, FaGithub, FaLink } from "react-icons/fa";
+import { GrMail } from "react-icons/gr";
 
 const SingleInstructor = ({ instructor }) => {
-    console.log(instructor);
-
+console.log(instructor);
     return (
-        <div className=" bg-white shadow-xl group ">
-            <div className='h-52 overflow-hidden'>
-                <figure><img src={instructor.image} alt="Shoes" className='w-full h-52 group-hover:scale-110 transition duration-500' /></figure>
-            </div>
-            <div className="card-body">
-                <h2 className="card-title text-blue-500">Name : {instructor.name}</h2>
-                <p>Email : {instructor.email}</p>
+       
 
-
+        <div  className="our-team">
+        <div className="pic">
+            <img src={instructor.image} className='h-52' />
+        </div>
+        <div className="team-content">
+            <h3 className="title">{instructor.name}</h3>
+            <div className='flex items-center justify-center'>
+                <p><GrMail className='me-2 text-[#2563EB]' /></p>
+                <p className="post lowercase">{instructor.email}</p>
             </div>
         </div>
+        <ul className="social">
+            <li>
+                <a  target="_blank"><FaLink /></a>
+            </li>
+            <li>
+                <a  target="_blank"><FaGithub /></a>
+            </li>
+            <li>
+                <a  target="_blank"><FaLinkedinIn /></a>
+            </li>
+        </ul>
+    </div>
     );
 };
 
