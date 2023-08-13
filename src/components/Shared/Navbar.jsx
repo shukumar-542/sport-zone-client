@@ -35,7 +35,7 @@ const Navbar = () => {
         document.querySelector('html').setAttribute('data-theme', localTheme)
     }, [theme])
     return (
-        <div className='sticky top-0  bg-[#030303]  text-white bg-opacity-50 shadow-md z-10 '>
+        <div className='sticky top-0  bg-[#2d72e9]  text-white bg-opacity-50 shadow-md z-10 '>
             <div className=' py-4 mx-auto sm:max-w-full md:max-w-full lg:max-w-screen-xl lg:px-8 '>
                 <div className='relative flex items-center justify-between'>
                     <div className='font-bold text-4xl text-gradient'>Sport<span className="text-blue-600">Z</span>one</div>
@@ -95,6 +95,33 @@ const Navbar = () => {
 
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink
+                                    to='/about'
+                                    aria-label='about'
+                                    title='about'
+                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                >
+                                    About Us
+
+                                    {/* <div className="badge badge-xs">+{addedClass?.length || 0} </div> */}
+
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to='/contact'
+                                    aria-label='contact'
+                                    title='contact'
+                                    className={({ isActive }) => (isActive ? 'active' : 'default')}
+                                >
+                                    Contact Us
+
+                                    {/* <div className="badge badge-xs">+{addedClass?.length || 0} </div> */}
+
+                                </NavLink>
+                            </li>
+                           
 
                         </ul>
                     </div>
